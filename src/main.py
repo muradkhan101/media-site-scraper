@@ -16,6 +16,7 @@ driver = webdriver.Chrome(executable_path=os.path.abspath("src/bin/chromedriver"
 driver.get("https://www.youtube.com/results?search_query=podcast")
 
 videos = driver.find_elements(By.TAG_NAME, "ytd-video-renderer")
+
 if len(videos) != 0:
     # for video_obj in videos:
     video_link = videos[1].find_element(By.ID, "video-title")
