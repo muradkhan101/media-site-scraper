@@ -7,18 +7,16 @@ class Page:
         handle is the Selenium tab handle
         """
         self.index = 0
-        self.fieldGroups = []
+        self.fieldStructures = []
         self.handle = handle
         self.whenDone = whenDone
 
-    def addGroup(self, group):
-        self.fieldGroups.push(group)
+    def addStructure(self, structure):
+        self.fieldStructures.push(structure)
         return self
 
-    def getGroups(self):
-        return self.fieldGroups
+    def getStructures(self):
+        return self.fieldStructures
 
     def done(self):
         self.whenDone()
-
-    

@@ -3,8 +3,15 @@ class FieldStructure:
     Class to hold all the Field queries for a page
     """
     def __init__(self):
-        self.queries = []
+        self.structure = {}
 
+    # {
+    #   "videos" : {
+    #                "main": fieldGroup
+    #                "children" : None
+    #
+    #
+    #
     def addQuery(self, field, name, count = False):
         self.queries.push({
             "field" : field,

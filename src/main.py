@@ -13,9 +13,9 @@ chrome_options.add_argument("user-agent=Mozilla/5.0\ (Macintosh;\ Intel\ Mac OS 
 
 driver = webdriver.Chrome(executable_path=os.path.abspath("src/bin/chromedriver"), chrome_options=chrome_options)
 
-driver.get("https://www.youtube.com/results?search_query=podcast")
+driver.get("https://www.youtube.com/results?search_query=podcast") #Page
 
-videos = driver.find_elements(By.TAG_NAME, "ytd-video-renderer")
+videos = driver.find_elements(By.TAG_NAME, "ytd-video-renderer") #FieldGroup
 
 if len(videos) != 0:
     # for video_obj in videos:
@@ -26,18 +26,18 @@ if len(videos) != 0:
     print(driver.current_url)
     #     continue
 
-    title = driver.find_element(By.CLASS_NAME, "title").text
+    title = driver.find_element(By.CLASS_NAME, "title").text #Field
 
-    views = driver.find_element(By.CLASS_NAME, "view-count").text
+    views = driver.find_element(By.CLASS_NAME, "view-count").text  #Field
     views = views[:views.index(" view")]
 
-    date = driver.find_element(By.CLASS_NAME, "date").text
+    date = driver.find_element(By.CLASS_NAME, "date").text #Field
     date = title[date.index(" on ") + 4:]
 
-    likes = driver.find_element(By.XPATH, "//yt-formatted-string[contains(@aria-label, ' likes')]").getAttribute('aria-label')
+    likes = driver.find_element(By.XPATH, "//yt-formatted-string[contains(@aria-label, ' likes')]").getAttribute('aria-label') #Field
     likes = likes[:likes.index(' likes')]
 
-    dislikes = driver.find_element(By.XPATH, "//yt-formatted-string[contains(@aria-label, ' dislikes')]").getAttribute('aria-label')
+    dislikes = driver.find_element(By.XPATH, "//yt-formatted-string[contains(@aria-label, ' dislikes')]").getAttribute('aria-label') #Field
     dislikes = dislikes[:dislikes.index(' dislikes')]
 
     print(title, views, date, likes, dislikes)

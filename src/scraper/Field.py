@@ -22,8 +22,11 @@ class Field:
         self.result = self.parent.find_elements(self.by, self.selector)
         return self
 
-    def processResult(self):
-        return self.process(self.result)
+    def process(self):
+        if (not self.result):
+            self.findOne()
+
+        return self.process(self.result) if type(self.result) is not list else list(map(lambda x: self.process), self.result)
 
     def getResult(self):
         return self.result
