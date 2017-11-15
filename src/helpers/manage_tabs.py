@@ -21,6 +21,10 @@ def open_tab(driver, link):
     driver.switch_to.window(driver.window_handles[current_tab + 1])
     return ( tab_handle, driver.current_window_handle )
 
-def close_tab(driver, old):
+def close_tab(driver, old = None):
     driver.close()
-    driver.switch_to.window(old)
+    if old:
+        driver.switch_to.window(old)
+
+def switch_tab(driver, tab):
+    driver.switch_to.window(tab)

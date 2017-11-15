@@ -6,39 +6,32 @@ class Field:
     by : By type from selenium.webdriver.common.by
     selector : class, id, tag name, etc. to query for
     """
-    def __init__(self, parent, by, selector, name, single = True, process = lambda x : x):
+    def __init__(self, parent, by, selector, process = lambda x : x, name):
         self.parent = parent
         self.by = by
         self.selector = selector
-        self.name = name
         self.process = process
-        self.single = single
         self.result = None
+        self.name = name
 
-    def find_one(self):
+    def findOne(self):
         self.result = self.parent.find_element(self.by, self.selector)
         return self
 
-    def find_all(self):
+    def findAll(self):
         self.result = self.parent.find_elements(self.by, self.selector)
         return self
 
-    def get_data(self):
-        if not self.result:
+    def process(self):
+        if (not self.result):
             self.findOne()
-            if self.single else
-            self.findAll()
 
-        return (
-            self.process(self.result)
-            if type(self.result) is not list
-            else list(map(lambda x: self.process), self.result)
-            )
+        return self.process(self.result) if type(self.result) is not list else list(map(lambda x: self.process), self.result)
 
-    def get_result(self):
+    def getResult(self):
         return self.result
 
-    def get_name(self):
+    def getName(self):
         return self.name
 
     def setSelector(self, selector):

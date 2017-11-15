@@ -9,7 +9,7 @@ from helpers.wait import wait_for_load
 chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument("--window-size=1280x720")
-chrome_options.add_argument("user-agent=Mozilla/5.0\ (Macintosh;\ Intel\ Mac OS X 10.12;\ rv:58.0)\ Gecko/20100101\ Firefox/58.0")
+chrome_options.add_argument("user-agent=Mozilla/5.0\ (Macintosh;\ Intel\ Mac\ OS\ X\ 10.12;\ rv:58.0)\ Gecko/20100101\ Firefox/58.0")
 
 driver = webdriver.Chrome(executable_path=os.path.abspath("src/bin/chromedriver"), chrome_options=chrome_options)
 

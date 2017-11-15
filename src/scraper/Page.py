@@ -1,22 +1,30 @@
+from ../helpers.manage_tabs import switch_tab, close_tab
 class Page:
-    def __init__(self, handle, whenDone):
-        """
-        Describes layout of information you want to scrape on a page
+    """
+    Maintains the status of a page open in Selenium
 
-        index is the index we are processing in fieldGroups
-        handle is the Selenium tab handle
-        """
-        self.index = 0
-        self.fieldStructures = []
+    handle is the Selenium tab handle
+    whenDone is a function that is called after all the steps are performed
+    """"""
+    Maintains the status of a page open in Selenium
+
+    handle is the Selenium tab handle
+    whenDone is a function that is called after all the steps are performed
+    """
+    def __init__(self, handle, whenDone):
+        self.status = False
         self.handle = handle
         self.whenDone = whenDone
+        self.groups = []
 
-    def addStructure(self, structure):
-        self.fieldStructures.push(structure)
+    def add_group(self, group):
+        self.groups.push(group)
+
+    def process_group_data(self):
+        for group in self.groups:
+            group.extractData().printData()
         return self
 
-    def getStructures(self):
-        return self.fieldStructures
-
-    def done(self):
-        self.whenDone()
+    def close_page(self, driver, handle = None):
+        switch_tab(driver, self.handle)
+        close_tab(driver, handle)
