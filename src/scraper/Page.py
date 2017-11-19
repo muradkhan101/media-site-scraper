@@ -5,11 +5,6 @@ class Page:
 
     handle is the Selenium tab handle
     whenDone is a function that is called after all the steps are performed
-    """"""
-    Maintains the status of a page open in Selenium
-
-    handle is the Selenium tab handle
-    whenDone is a function that is called after all the steps are performed
     """
     def __init__(self, handle, whenDone):
         self.status = False
@@ -18,7 +13,7 @@ class Page:
         self.groups = []
 
     def add_group(self, group):
-        self.groups.push(group)
+        self.groups.append(group)
 
     def process_group_data(self):
         for group in self.groups:

@@ -11,13 +11,13 @@ class FieldGroup:
         self.name = name
 
     def add_field(self, field):
-        self.fields.push(field)
+        self.fields.append(field)
         return self
 
     def extract_data(self):
         if (len(self.fields) > 0):
             for field in self.fields:
-                self.result[field.name] = field.getData()
+                self.result[field.get_name()] = field.get_data()
         return self
 
     def print_data(self):

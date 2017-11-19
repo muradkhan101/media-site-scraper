@@ -1,6 +1,6 @@
 class Field:
     """
-    Class to query a single field on a page
+    Class to extract data from a single selector on a page
     @params
     parent : parent element to query as root (default should be driver)
     by : By type from selenium.webdriver.common.by
@@ -32,7 +32,7 @@ class Field:
         return (
             self.process(self.result)
             if type(self.result) is not list
-            else list(map(lambda x: self.process), self.result)
+            else list(map(lambda x: self.process(x)), self.result)
             )
 
     def get_result(self):
