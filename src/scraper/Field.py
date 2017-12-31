@@ -25,9 +25,7 @@ class Field:
 
     def get_data(self):
         if not self.result:
-            self.findOne()
-            if self.single else
-            self.findAll()
+            self.findOne() if self.single else self.findAll()
 
         return (
             self.process(self.result)
