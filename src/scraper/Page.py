@@ -1,4 +1,4 @@
-from ../helpers.manage_tabs import switch_tab, close_tab
+from ..helpers.manage_tabs import switch_tab, close_tab
 class Page:
     """
     Maintains the status of a page open in Selenium
